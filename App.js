@@ -1,11 +1,7 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, Text, View } from 'react-native';
-import { HomeScreen } from './vistasLeft/HomeScreen';
-import { Login } from './vistasLeft/Login';
-import { NavigationLeft } from './Navigation/NavigationLeft';
 import { TabNavigation } from './Navigation/TabNavigation';
+import { Provider } from 'react-redux';
+import store from './store';
 
 export default function App() {
 
@@ -15,7 +11,9 @@ export default function App() {
 
   return (
     // <NavigationLeft/>
+    <Provider store={store}>
     <TabNavigation/>
+    </Provider>
   );
 }
 

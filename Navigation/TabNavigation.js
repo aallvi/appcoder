@@ -6,6 +6,7 @@ import { NavigationRight } from './NavigationRight';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import {Ionicons} from '@expo/vector-icons'
+import { PantallaPrueba } from '../vistasRight/PantallaPrueba';
 
 const BottomTabs = createBottomTabNavigator()
 
@@ -37,6 +38,7 @@ export const TabNavigation = () => {
             }}
             
             />
+            
 
             <BottomTabs.Screen 
             name="NavigationRight" 
