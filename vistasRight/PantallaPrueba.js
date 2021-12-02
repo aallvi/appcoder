@@ -1,5 +1,5 @@
 import React, { useState, version } from 'react'
-import { Text, TextInput, TouchableHighlight, View } from 'react-native'
+import { Text, TextInput, TouchableHighlight,TouchableOpacity, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { resta, suma,aumentaUsuario } from '../store/actions/name.actions'
 
@@ -34,18 +34,18 @@ const [aumentar, setAumentar] = useState(0)
             <Text style={{textAlign:'center', fontSize:30,color:'black'}}>{numero}</Text>
 
             <View style={{flexDirection:'row', justifyContent:'center'}}>
-            <TouchableHighlight
+            <TouchableOpacity
             onPress={sumar}
             >
                
                 <Text style={{textAlign:'center', fontSize:30,color:'black'}}> + </Text>
-            </TouchableHighlight>
-            <TouchableHighlight
+            </TouchableOpacity>
+            <TouchableOpacity
             onPress={restar}
             >
                 
                 <Text style={{textAlign:'center', fontSize:30,color:'black'}}> - </Text>
-            </TouchableHighlight>
+            </TouchableOpacity>
                     
             </View>
 
@@ -55,14 +55,14 @@ const [aumentar, setAumentar] = useState(0)
             onChangeText={(text) => setAumentar(text) }
             />
 
-            <TouchableHighlight
+            <TouchableOpacity
             onPress={aumentarfuncion}
             >
                 <View style={{alignItems:'center', marginTop:50,justifyContent:'center'}} >
                 <Text style={{textAlign:'center', fontSize:30,color:'white', backgroundColor:'blue', width:300, borderRadius:20,}}>Aumenta </Text>
                 </View>
                 
-            </TouchableHighlight>
+            </TouchableOpacity>
 
 
            
