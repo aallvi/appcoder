@@ -1,9 +1,12 @@
-import {AUMENTAR_EN, RESTA, SUMA} from "../actions/name.actions";
+import {AUMENTAR_EN, LOG_OUT, RESTA, SIGN_IN, SIGN_UP, SUMA} from "../actions/name.actions";
 
 
 const initialState = {
     num: 1,
-    
+    token: null,
+    userId: null,
+    registrado: false,
+    logeado: false
     
 }
 
@@ -11,22 +14,25 @@ const initialState = {
 const nameReducer = (state=initialState,action) => {
 
     switch (action.type) {
-        case SUMA:
+       
+        case SIGN_UP:
             return{
                 ...state,
-               num: state.num + action.payload
+               token: action.token,
+               userId: action.userId,
+               registrado: true
                 
             }
-        case RESTA:
+        case SIGN_IN:
             return{
                 ...state,
-               num: state.num - action.payload
+               logeado: action.logeado
                 
             }
-        case AUMENTAR_EN:
+        case LOG_OUT:
             return{
                 ...state,
-               num: state.num + action.payload
+               logeado: action.payload
                 
             }
             

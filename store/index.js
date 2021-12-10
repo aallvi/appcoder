@@ -1,4 +1,5 @@
-import { createStore,combineReducers } from "redux";
+import { createStore,combineReducers,applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 import nameReducer from "./reducers/name.reducers";
 
 const RootReducer = combineReducers({
@@ -6,4 +7,4 @@ const RootReducer = combineReducers({
    
 })
 
-export default createStore(RootReducer)
+export default createStore(RootReducer, applyMiddleware(thunk))

@@ -1,28 +1,39 @@
 import { useNavigation } from '@react-navigation/core';
 import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../store/actions/name.actions';
 
 export const HomeScreen = () => {
 
+  const dispatch = useDispatch()
 
-  const navigation = useNavigation()
+  const logeado = useSelector(state => state.name.logeado)
+  
 
-  const handleLogin = () => {
+  console.log('logeadoenHome',logeado)
 
-    navigation.navigate('Login')
+  
 
+const handleLogout = () => {
+    
+  dispatch(logout())
 
-  }
-
+}
 
     return (
         <View style={styles.container}>
             
 
-            <Button
-        title="Logear"
-        onPress={() => {handleLogin()} }
-         />
+            <Text>Bienvenido</Text>
+
+            <TouchableOpacity style={{marginTop:30}}
+            
+            onPress={() => handleLogout() }
+
+            >
+              <Text style={{fontSize:30, color:'red'}} >Cerrar Sesion</Text>
+            </TouchableOpacity>
             
         </View>
     )

@@ -9,7 +9,7 @@ import { Register } from '../vistasLeft/Register';
 
 
 
-export const NavigationLeft = () => {
+export const NavigationLogin = () => {
 
   const Stack = createNativeStackNavigator();
 
@@ -25,7 +25,7 @@ export const NavigationLeft = () => {
 
        <Stack.Screen
         name="Login"
-        component={HomeScreen}
+        component={Login}
         options={{
           title: 'Login',
           headerStyle: {
@@ -40,7 +40,25 @@ export const NavigationLeft = () => {
         }}
         
         />
-      
+       <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{
+          title: 'Registrate',
+          headerStyle: {
+            backgroundColor: '#5E49E2',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize:20
+          },
+          headerShown:false
+
+        }}
+        
+        />
+
 
     </Stack.Navigator>
     
