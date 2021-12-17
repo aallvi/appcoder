@@ -2,6 +2,7 @@ import React from 'react';
 import { TabNavigation } from './Navigation/TabNavigation';
 import { Provider, useSelector } from 'react-redux';
 import store from './store';
+import { Isloged } from './Navigation/Isloged';
 
 export default function App() {
 
@@ -13,8 +14,8 @@ export default function App() {
     // <NavigationLeft/>
     <Provider store={store}>
 
-
-    <TabNavigation/>
+    <Isloged/>
+    {/* <TabNavigation/> */}
     </Provider>
   );
 }

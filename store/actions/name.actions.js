@@ -1,17 +1,21 @@
 import { SIGN_IN_URL, SIGN_UP_URL } from "../../database";
 
-export const SUMA = 'SUMA';
-export const RESTA = 'RESTA'
-export const AUMENTAR_EN = 'AUMENTAR_EN'
+
 export const SIGN_UP = 'SIGN_UP'
 export const SIGN_IN = 'SIGN_IN'
 export const LOG_OUT = 'LOG_OUT'
+export const INVITADO = 'INVITADO'
 
 
 
 export const logout = () => ({
     type: LOG_OUT,
     payload: false
+})
+
+export const invitado = () => ({
+    type: INVITADO,
+    payload: true
 })
 
 

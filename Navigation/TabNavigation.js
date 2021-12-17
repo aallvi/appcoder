@@ -1,14 +1,11 @@
 import React from 'react'
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationLogin } from './NavigationLogin';
 import { NavigationRight } from './NavigationRight';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import {Ionicons} from '@expo/vector-icons'
-import { PantallaPrueba } from '../vistasRight/PantallaPrueba';
+import {Ionicons,FontAwesome} from '@expo/vector-icons'
 import { useSelector } from 'react-redux';
-import { Login } from '../vistasLeft/Login';
 import { NavigationLeft } from './NavigationLeft';
 
 const BottomTabs = createBottomTabNavigator()
@@ -16,17 +13,14 @@ const BottomTabs = createBottomTabNavigator()
 
 export const TabNavigation = () => {
 
-    const logeado = useSelector(state => state.name.logeado)
+    // const logeado = useSelector(state => state.name.logeado)
 
 
 
     return (
-        <NavigationContainer>
+        
 
-            {
-               
-               logeado ? 
-
+        
                <BottomTabs.Navigator 
                screenOptions={{
                    headerShown: false,
@@ -41,8 +35,8 @@ export const TabNavigation = () => {
                    options={{
                        tabBarIcon: ({focused}) => (
                            <View style={{justifyContent:'center',flex:1,alignItems:'center'}}>
-                               <Ionicons name='md-home' size={24} color={focused ? 'blue' : 'black'} />
-                               <Text style={{color:'black',alignSelf:'center'}}>Vegan</Text>
+                               <Ionicons name='planet-outline' size={24} color={focused ? 'yellow' : 'white'} />
+                               <Text style={{color:'white',alignSelf:'center'}}>Hoy</Text>
                            </View>
                        )
                    
@@ -57,8 +51,8 @@ export const TabNavigation = () => {
                    options={{
                        tabBarIcon: ({focused}) => (
                            <View style={{justifyContent:'center',flex:1,alignItems:'center'}}>
-                               <Ionicons name='ios-cart-sharp' size={24} color={focused ? 'blue' : 'black'} />
-                               <Text style={{color:'black'}}>Config</Text>
+                               <FontAwesome name='space-shuttle' size={24} color={focused ? 'yellow' : 'white'} />
+                               <Text style={{color:'white'}}>Mapa Satelital</Text>
                            </View>
                        )
                    
@@ -68,27 +62,21 @@ export const TabNavigation = () => {
                    
                </BottomTabs.Navigator>
 
-               :
+               
 
-               <NavigationLogin />
-
-
-            }
-
-
-       
-        </NavigationContainer>
+             
     )
 }
 
 const styles = StyleSheet.create({
     tabBar: {
+       backgroundColor:'black',
        position: 'absolute',
-       bottom:25,
-       left:20,
-       right:20,
-       borderRadius:10,
-       height:80,
+       bottom:0,
+    //    left:20,
+    //    right:20,
+    //    borderRadius:10,
+       height:60,
        shadowColor: "#000",
         shadowOffset: {
             width: 0,

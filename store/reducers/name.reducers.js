@@ -1,4 +1,4 @@
-import {AUMENTAR_EN, LOG_OUT, RESTA, SIGN_IN, SIGN_UP, SUMA} from "../actions/name.actions";
+import { LOG_OUT, SIGN_IN, SIGN_UP, INVITADO} from "../actions/name.actions";
 
 
 const initialState = {
@@ -30,6 +30,19 @@ const nameReducer = (state=initialState,action) => {
                 
             }
         case LOG_OUT:
+            return{
+                ...state,
+               logeado: action.payload
+                
+            }
+        case LOG_OUT:
+            return{
+                ...state,
+               logeado: action.payload
+                
+            }
+            
+        case INVITADO:
             return{
                 ...state,
                logeado: action.payload

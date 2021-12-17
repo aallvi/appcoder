@@ -2,9 +2,9 @@ import { useNavigation } from '@react-navigation/core';
 import React, { useState } from 'react'
 import { Alert, Button, Dimensions, ImageBackground, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { signIn, signUp } from '../store/actions/name.actions';
+import { signIn, signUp, invitado } from '../store/actions/name.actions';
 
-export const image = { uri: "https://images.pexels.com/photos/6419344/pexels-photo-6419344.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" }
+export const image = { uri: "https://w0.peakpx.com/wallpaper/393/838/HD-wallpaper-space-planets-straes.jpg" }
 
 
 export const Login = () => {
@@ -40,14 +40,22 @@ export const Login = () => {
         
 
     }
+
+    const Logininvitado = () => {
+
+        dispatch(invitado())
+    }
+
+
     console.log('logeado',logeado)
+
 
     return (
 
         <ImageBackground 
         
         source={image}
-        style={{flex:1,justifyContent:'center', width:width,height:'100%'}}
+        style={{flex:1,justifyContent:'center',width:width,height:'100%'}}
         
         >
        
@@ -95,6 +103,10 @@ export const Login = () => {
 
           <TouchableOpacity onPress={() => navigation.navigate('Register') } >
             <Text style={{textAlign:'center', fontSize:17, marginTop:20, color:'blue'}} >Registrate</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() =>Logininvitado() } >
+            <Text style={{textAlign:'center', fontSize:15, marginTop:20, color:'green'}} >Entrar como invitado</Text>
           </TouchableOpacity>
 
         </View>

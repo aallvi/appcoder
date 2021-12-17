@@ -1,7 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Text, View } from 'react-native';
-import { PantallaPrueba } from '../vistasRight/PantallaPrueba';
+import { MapaSatelital } from '../vistasRight/MapaSatelital';
+import { LocationSelector } from '../vistasRight/LocationSelector';
 
 
 
@@ -19,10 +20,10 @@ export const NavigationRight = () => {
 
 
      <Stack.Screen
-      name="PantallaPrueba"
-      component={PantallaPrueba}
+      name="LocationSelector"
+      component={LocationSelector}
       options={{
-        title: 'PantallaPrueba',
+        title: 'MapaSatelital',
         headerStyle: {
           backgroundColor: '#5E49E2',
         },
@@ -31,6 +32,7 @@ export const NavigationRight = () => {
           fontWeight: 'bold',
           fontSize:20
         },
+        headerShown:false
       }}
       
       />

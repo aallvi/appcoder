@@ -21,8 +21,6 @@ export const NavigationLogin = () => {
     <Stack.Navigator initialRouteName='Login' >
      
 
-
-
        <Stack.Screen
         name="Login"
         component={Login}
