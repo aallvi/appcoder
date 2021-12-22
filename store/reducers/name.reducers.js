@@ -6,8 +6,8 @@ const initialState = {
     token: null,
     userId: null,
     registrado: false,
-    logeado: false
-    
+    logeado: false,
+ 
 }
 
 
@@ -48,7 +48,7 @@ const nameReducer = (state=initialState,action) => {
                logeado: action.payload
                 
             }
-            
+       
             
         default:
             break;

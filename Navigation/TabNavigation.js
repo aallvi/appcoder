@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {Ionicons,FontAwesome} from '@expo/vector-icons'
 import { useSelector } from 'react-redux';
 import { NavigationLeft } from './NavigationLeft';
+import { Favorite } from '../Favorite/Favorite';
 
 const BottomTabs = createBottomTabNavigator()
 
@@ -15,6 +16,7 @@ export const TabNavigation = () => {
 
     // const logeado = useSelector(state => state.name.logeado)
 
+    
 
 
     return (
@@ -53,6 +55,20 @@ export const TabNavigation = () => {
                            <View style={{justifyContent:'center',flex:1,alignItems:'center'}}>
                                <FontAwesome name='space-shuttle' size={24} color={focused ? 'yellow' : 'white'} />
                                <Text style={{color:'white'}}>Mapa Satelital</Text>
+                           </View>
+                       )
+                   
+                   }}
+       
+                   />
+                   <BottomTabs.Screen 
+                   name="Favorite" 
+                   component={Favorite}
+                   options={{
+                       tabBarIcon: ({focused}) => (
+                           <View style={{justifyContent:'center',flex:1,alignItems:'center'}}>
+                               <Ionicons name='star-outline' size={24} color={focused ? 'yellow' : 'white'} />
+                               <Text style={{color:'white'}}>Favoritos</Text>
                            </View>
                        )
                    

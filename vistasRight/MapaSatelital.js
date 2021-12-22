@@ -1,6 +1,9 @@
 import React, { useEffect, useState,} from 'react'
-import { Image, StyleSheet, Text, TextInput, TouchableHighlight,TouchableOpacity, View } from 'react-native'
+import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableHighlight,TouchableOpacity, View } from 'react-native'
 import Satelital from '../src/api/ImgSat';
+
+const {width,height} =  Dimensions.get('window')
+
 // import { LocationSelector } from './LocationSelector';
 
 
@@ -21,7 +24,7 @@ export const MapaSatelital = ({latitud,longitud}) => {
       
     
 
-   const uri = `https://api.nasa.gov/planetary/earth/imagery?lon=${longitud}&lat=${latitud}&date=2021-01-01&dim=0.15&api_key=DEMO_KEY`
+   const uri = `https://api.nasa.gov/planetary/earth/imagery?lon=${longitud}&lat=${latitud}&date=2021-01-01&dim=0.15&api_key=9SeJAnzjxX5SfJx9uNrwjwivEb9b8bh5qexvggT7`
 
     return (
         <View style={{flex:1,backgroundColor:'black'}} >
@@ -41,7 +44,7 @@ export const MapaSatelital = ({latitud,longitud}) => {
 const styles = StyleSheet.create({
     image:{
         width:400,
-        height:400,
+        height:height*0.6,
         alignItems:'center',
         borderRadius:10,
         marginTop:30,
