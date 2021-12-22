@@ -8,6 +8,7 @@ import {Ionicons,FontAwesome} from '@expo/vector-icons'
 import { useSelector } from 'react-redux';
 import { NavigationLeft } from './NavigationLeft';
 import { Favorite } from '../Favorite/Favorite';
+import { Favportada } from '../Favorite/Favportada';
 
 const BottomTabs = createBottomTabNavigator()
 
@@ -62,8 +63,8 @@ export const TabNavigation = () => {
        
                    />
                    <BottomTabs.Screen 
-                   name="Favorite" 
-                   component={Favorite}
+                   name="Favportada" 
+                   component={Favportada}
                    options={{
                        tabBarIcon: ({focused}) => (
                            <View style={{justifyContent:'center',flex:1,alignItems:'center'}}>

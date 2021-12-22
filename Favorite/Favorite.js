@@ -62,7 +62,7 @@ const [count, setCount] = useState(favoritos.length-1)
        
         
          {
-             favoritos.length > 1 ?  
+             favoritos.length > 0 ?  
              <>
              <View style={{justifyContent:'center',marginTop:10, flexDirection:'row'}} >
             
@@ -88,7 +88,7 @@ const [count, setCount] = useState(favoritos.length-1)
            
            {
            
-           favoritos.length > 1 && 
+           favoritos.length > 0 && 
            <FavPaginador data={favoritos} setCount={setCount} count={count} />
            }
            

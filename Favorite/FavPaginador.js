@@ -40,7 +40,7 @@ console.log(data)
         <View style={styles.paginador}>
         
        
-        {  data.length >2 && count != 1 &&
+        {  data.length >1 && count != 0 &&
          <View style={{flex:1}} >
          <TouchableOpacity
          onPress={( ) => handleBack() }
