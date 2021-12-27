@@ -8,7 +8,7 @@ export const Favportada = () => {
     const favoritos = useSelector(state => state.app.favoritos)
 
      
-
+     console.log('long',favoritos.length)
 
 
     return (
@@ -17,11 +17,12 @@ export const Favportada = () => {
     <>
     
     {
-        favoritos.length === 0 ?  <View style={{backgroundColor:'black',flex:1,justifyContent:'center'}} >
+        favoritos.length > 0 ?  <Favorite/> :
+        <View style={{backgroundColor:'black',flex:1,justifyContent:'center'}} >
     
         <Text style={styles.titulo} > ¡Añade algo espacial a tus favoritos! </Text>
  
-         </View> : <Favorite/>
+         </View>
     }
     
     

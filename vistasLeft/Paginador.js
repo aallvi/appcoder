@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {Ionicons} from '@expo/vector-icons'
-import { useDispatch } from 'react-redux';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { useDispatch,useSelector } from 'react-redux';
+import { Alert, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { favorite } from '../store/actions/app.actions';
 
 
@@ -9,25 +9,28 @@ import { favorite } from '../store/actions/app.actions';
 
 export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
 
-  const [objFavorito, setObjFavorito] = useState({})
-
-
-    useEffect(() => {
-        setObjFavorito({title,url,explanation,date,copyright})
-        
-    }, [apod])
+  const [hoy, setHoy] = useState(dia)
    
-    console.log('favo',objFavorito)
+  console.log('hoy',hoy)
+  console.log('dia',dia)
 
+  const [objFavorito, setObjFavorito] = useState({})
+    
+  const favoritos = useSelector(state => state.app.favoritos)
+   
+  const [isFav, setIsFav] = useState('')
 
-  const {title,hdurl,copyright,date,explanation,url} = apod
+    
+   
+    // console.log('favo',objFavorito)
+
+    const {title,hdurl,copyright,date,explanation,url} = apod
 
 
     const dispatch = useDispatch()
-    
-    const [hoy, setHoy] = useState(dia)
 
-    // console.log('apod',apod)
+
+    
 
     const handleBack = () => {
         setDia(dia-1)
@@ -50,6 +53,19 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
 
     const favori = () => {
         
+        if(isFav != undefined ){
+            Alert.alert(
+                "Ya esta en Favoritos",
+                "Intenta con otra Fotografia",
+                [
+                  {
+                    text: "Ok",
+                  },
+                ],
+                
+              );
+              return
+        }
 
         console.log('añadiendo')
         dispatch(favorite({
@@ -63,7 +79,24 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
 
     }
 
-    console.log('ovjfabb',objFavorito.title)
+    useEffect(() => {
+        setObjFavorito({title,url,explanation,date,copyright})
+    
+     const found = favoritos.find(fav => fav.date === apod.date)
+
+    console.log('found',found)
+    setIsFav(found)
+    }, [apod])
+
+   
+
+    useEffect(() => {
+        
+        const found = favoritos.find(fav => fav.date === apod.date)
+
+        console.log('found',found)
+        setIsFav(found)
+    }, [favoritos])
 
 
     return (
@@ -72,26 +105,32 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
         <TouchableOpacity
         onPress={( ) => handleBack() }
         >
-
-       <Ionicons name='caret-back-outline' size={30} color='blue' />
+    
+       <Ionicons name='caret-back-outline' size={30} color='white' />
 
        </TouchableOpacity>
-
-       <TouchableOpacity
+       
+       {
+        apod.date != 'infinito' &&
+        <TouchableOpacity
         onPress={( ) => favori() }
         >
 
-       <Ionicons name='star-outline' size={30} color='grey' />
+       <Ionicons name='star-outline' size={30} color={isFav===undefined ? 'grey' : 'yellow' } />
 
        </TouchableOpacity>
 
+       }
+      
 
-       {
+
+       {    hoy == dia ? null : 
+
            <TouchableOpacity
            onPress={( ) => handleAdd() }
            >
    
-          <Ionicons name='caret-forward-outline' size={30} color='blue' />
+          <Ionicons name='caret-forward-outline' size={30} color='white' />
    
           </TouchableOpacity> 
        }
@@ -107,6 +146,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         marginHorizontal:15,
-        marginTop:10
+        marginTop:10,
+        marginBottom:5
     }
 })

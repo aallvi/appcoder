@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import {Ionicons,FontAwesome} from '@expo/vector-icons'
 import { FavPaginador } from './FavPaginador'
 import { deleteFav,loadFavs } from '../store/actions/app.actions'
+import { Modaldescription } from '../vistasLeft/Modaldescription'
+// import { Description } from '../vistasLeft/Description'
 
 const {width,height} =  Dimensions.get('window')
 
@@ -17,21 +19,12 @@ export const Favorite = () => {
 
     console.log('favoritt',favoritos)
 
-   const componente =
-   <View style={{backgroundColor:'black',flex:1,justifyContent:'center'}} >
-    <Text style={styles.titulo} > ¡Añade algo espacial a tus favoritos! </Text>
-    </View>
+  
 
 
-const dispatch = useDispatch()
-const [count, setCount] = useState(favoritos.length-1)
+    const dispatch = useDispatch()
+    const [count, setCount] = useState(favoritos.length-1)
 
-
- useEffect(() => {
-    
-    dispatch(loadFavs())
-    console.log('cargaron')
-  }, [])
 
   
   useEffect(() => {
@@ -43,27 +36,27 @@ const [count, setCount] = useState(favoritos.length-1)
  
    
 
-  const {title,hdurl,copyright,date,explanation,url} = favoritos[count]
+  const {title,copyright,date,explanation,url} = favoritos[count]
 
-
-           console.log(favoritos)
-
-           console.log(count)
-       
    
     const deletf = () => {
         setCount(count-1)
+        // console.log('qesale',favoritos[count])
          dispatch(deleteFav(favoritos[count]))
+         
     }
+    const [modalVisible, setModalVisible] = useState(false)
 
     return (
         <View style={{backgroundColor:'black',flex:1}} >
-
+       <View >
+       <Modaldescription explanation={explanation} modalVisible={modalVisible} setModalVisible={setModalVisible} />
+       </View>
        
         
-         {
-             favoritos.length > 0 ?  
-             <>
+         
+             
+             
              <View style={{justifyContent:'center',marginTop:10, flexDirection:'row'}} >
             
          
@@ -84,7 +77,7 @@ const [count, setCount] = useState(favoritos.length-1)
              {/* Titulo e Imagen */}
            <View style={styles.imageContainer} >
  
-           <Text style={{marginTop:1,color:'white', fontSize:20, textAlign:'center'}} > {title}  </Text>
+           <Text style={{marginTop:1,color:'white', fontSize:19, textAlign:'center'}} > {title}  </Text>
            
            {
            
@@ -92,12 +85,15 @@ const [count, setCount] = useState(favoritos.length-1)
            <FavPaginador data={favoritos} setCount={setCount} count={count} />
            }
            
-           <Image
-                   
-                   source={{ uri:url}}
-                   style={styles.image}
-                   
-           />
+           <TouchableOpacity onPress={() => setModalVisible(true)  }  >
+                <Image
+                  
+                  source={{ uri:url}}
+                  style={styles.image}
+                  
+                 />
+              
+              </TouchableOpacity>
            
            {/* Fecha, paginador, copyright */}
           
@@ -113,9 +109,7 @@ const [count, setCount] = useState(favoritos.length-1)
  
  
            
-           <View style={{ alignItems:'center',flex:1}} >
-           <Text style={{color:'white',marginLeft:8,color:'white',textAlign:'justify',fontSize:13,marginTop:40}} > Descripcion </Text>
-           </View>
+           {/* <Description explanation={explanation}  /> */}
           
                
              
@@ -124,11 +118,9 @@ const [count, setCount] = useState(favoritos.length-1)
  
         
          </View>
-         </>
-          :
-          componente
+       
              
-         }
+         
 
 
      </View>
@@ -151,8 +143,8 @@ const styles=StyleSheet.create({
         // justifyContent: 'center',
       },
       image: {
-        width:400,
-        height:height *0.6,
+        width:width* 0.98,
+        height:height *0.69,
         alignItems:'center',
         borderRadius:10,
         marginTop:10,

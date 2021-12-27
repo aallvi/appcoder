@@ -41,12 +41,12 @@ console.log(data)
         
        
         {  data.length >1 && count != 0 &&
-         <View style={{flex:1}} >
+         <View style={{flex:1,alignItems:'flex-start'}} >
          <TouchableOpacity
          onPress={( ) => handleBack() }
          >
  
-        <Ionicons name='caret-back-outline' size={30} color='blue' />
+        <Ionicons name='caret-back-outline' size={30} color='white' />
  
         </TouchableOpacity>
 
@@ -65,7 +65,7 @@ console.log(data)
            onPress={( ) => handleAdd() }
            >
    
-          <Ionicons name='caret-forward-outline' size={30} color='blue' />
+          <Ionicons name='caret-forward-outline' size={30} color='white' />
    
           </TouchableOpacity> 
           </View>

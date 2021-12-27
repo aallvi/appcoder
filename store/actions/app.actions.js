@@ -1,13 +1,13 @@
 export const FAVORITE = 'FAVORITE'
 export const DELETE_FAVORITE = 'DELETE_FAVORITE'
 export const LOAD_FAVS = 'LOAD_FAVS'
-import { insertFavs,fetchFavs } from "../../db/index"
+import { insertFavs,fetchFavs, deleteFa } from "../../db/index"
 
 export const favorite = (title,copyright,date,explanation,url) => {
     return async dispatch => {
          
          try {
-            console.log('hola')
+            // console.log('hola')
             const result = await insertFavs(title,copyright,date,explanation,url);
             
 
@@ -33,14 +33,39 @@ export const favorite = (title,copyright,date,explanation,url) => {
 
 }
 
-export const deleteFav = (x) => ({
-    type: DELETE_FAVORITE,
-    payload: x
-})
-// export const favorite = (title,copyright,date,explanation,url) => ({
-//     type: FAVORITE,
-//     payload: title,copyright,date,explanation,url
-// })
+export const deleteFav = (x) => {
+
+    return async dispatch => {
+      
+        try {
+            
+            const result = await deleteFa(x)
+            console.log('resultdelete',result)
+
+            dispatch({
+                type: DELETE_FAVORITE,
+                payload: x
+            });
+
+        } catch (error) {
+
+            console.log(err);
+             throw err;
+            
+        }
+
+       
+
+    }
+
+    
+
+
+
+    
+}
+
+
 
 export const loadFavs = () => {
     return async dispatch => {

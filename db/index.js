@@ -54,3 +54,21 @@ export const fetchFavs = () => {
         })
     } )
 }
+
+export const deleteFa = (x) => {
+      return new Promise ((resolve,reject) => {
+
+          db.transaction(tx => {
+            tx.executeSql(
+                `DELETE FROM favs where title=?`,
+                [x.title],
+                (_,result) => resolve(result),
+                (_,err) => reject(err)
+            )
+            // console.log('desdesql',x.title)
+
+          })
+      } )
+     
+
+}
