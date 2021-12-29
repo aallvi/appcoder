@@ -31,7 +31,7 @@ export const Modaldescription = ({explanation,modalVisible,setModalVisible}) => 
                         style={[styles.button, styles.buttonClose]}
                         onPress={() => setModalVisible(!modalVisible)}
                         >
-                        <Text style={styles.textStyle}>Cerrar</Text>
+                        <Text style={styles.textStyle}>Close</Text>
                         </TouchableOpacity>
 
                     </View>

@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Button, TouchableOpacity, Image, Dimensions, Sc
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/actions/name.actions';
+import { Musica } from '../Musica';
 import { Paginador } from './Paginador';
 import moment from 'moment'
 import { favorite, loadFavs } from '../store/actions/app.actions';
@@ -77,6 +78,9 @@ const handleLogout = () => {
 
   const [modalVisible, setModalVisible] = useState(false)
 
+//   const iduser = useSelector(state => state.name.uid)
+//  console.log('id usuario',iduser)
+   
     return (
        <> 
         <View >
@@ -85,9 +89,9 @@ const handleLogout = () => {
 
         <View style={styles.container}>
          
-            <TouchableOpacity style={{marginTop:10}}
+            <TouchableOpacity 
             onPress={() => handleLogout() }
-            style={{alignItems:'flex-end',marginTop:5,marginRight:20}}
+            style={{alignItems:'flex-end',marginRight:20}}
             >
               <Text style={{fontSize:15, color:'red'}} >Cerrar Sesion</Text>
             </TouchableOpacity>
@@ -111,14 +115,18 @@ const handleLogout = () => {
                   source={{ uri:url}}
                   style={styles.image}
                   
+
+                  
                  />
+
+                 {/* <Musica /> */}
               
               </TouchableOpacity>
 
           
           {/* Fecha, paginador, copyright */}
           <View style={{flexDirection:'row', justifyContent:'space-between', marginHorizontal:8, marginTop:5}} >
-          <Text style={{color:'white',color:'yellow'}} > {date} </Text>
+          <Text style={{color:'white',color:'yellow'}} > {dia}-{mes}-{ano} </Text>
 
           
 
@@ -155,7 +163,7 @@ const styles = StyleSheet.create({
 
     imageContainer :{
       // justifyContent:'center',
-      marginTop:20,
+      marginTop:10,
       // flex:1,
       // alignItems:'center',
       borderRadius:10,

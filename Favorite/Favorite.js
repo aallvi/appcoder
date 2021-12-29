@@ -57,17 +57,18 @@ export const Favorite = () => {
          
              
              
-             <View style={{justifyContent:'center',marginTop:10, flexDirection:'row'}} >
+             <View style={{justifyContent:'center', flexDirection:'row'}} >
             
-         
 
              <View style={{ flex:1,justifyContent:'flex-end',marginRight:20,flexDirection:'row'}} >
-                 <Text style={{color:'yellow',alignSelf:'center',marginRight:10}} > Quitar de Favs</Text>
-             <TouchableOpacity
-             onPress={() => deletf()}
-             >
-             <Ionicons name='star-outline' size={30} color='yellow' />
-             </TouchableOpacity>
+                  <Text style={{color:'yellow',alignSelf:'center',marginRight:10}} > Quitar de Favs</Text>
+
+                    <TouchableOpacity
+                    onPress={() => deletf()}
+                    >
+                    <Ionicons name='star-outline' size={24} color='yellow' />
+
+                    </TouchableOpacity>
              </View>
 
             </View>
@@ -77,7 +78,7 @@ export const Favorite = () => {
              {/* Titulo e Imagen */}
            <View style={styles.imageContainer} >
  
-           <Text style={{marginTop:1,color:'white', fontSize:19, textAlign:'center'}} > {title}  </Text>
+           <Text style={{color:'white', fontSize:19, textAlign:'center'}} > {title}  </Text>
            
            {
            
@@ -147,14 +148,14 @@ const styles=StyleSheet.create({
         height:height *0.69,
         alignItems:'center',
         borderRadius:10,
-        marginTop:10,
+        marginTop:2,
         alignSelf:'center'
         
       },
   
       imageContainer :{
         // justifyContent:'center',
-        marginTop:20,
+        marginTop:10,
         // flex:1,
         // alignItems:'center',
         borderRadius:10,

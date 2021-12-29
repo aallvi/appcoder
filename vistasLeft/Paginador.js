@@ -9,10 +9,16 @@ import { favorite } from '../store/actions/app.actions';
 
 export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
 
-  const [hoy, setHoy] = useState(dia)
+  const [hoy, setHoy] = useState(Number(dia))
+  const [mesHoy, setMesHoy] = useState(Number(mes))
+
+  const [add, setadd] = useState(false)
+  const [less, setless] = useState(false)
    
-  console.log('hoy',hoy)
-  console.log('dia',dia)
+//   console.log('hoy',hoy)
+//   console.log('dia',dia)
+//   console.log('mes',mes)
+//   console.log('apod',apod)
 
   const [objFavorito, setObjFavorito] = useState({})
     
@@ -30,13 +36,15 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
     const dispatch = useDispatch()
 
 
-    
 
     const handleBack = () => {
+       setless(!less)
+
         setDia(dia-1)
        if(dia===1){
            setDia(31)
            setMes(mes-1)
+          
        }
        
     }
@@ -44,19 +52,55 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
   
     
     const handleAdd = () => {
+        setadd(!add)
    
         setDia(dia+1)
-
+        if(dia==31){
+            setDia(1)
+            setMes(mes+1)
+        }
         // setDia(dia-1)
 
     }
+// console.log('less',less)
 
+    useEffect(() => {
+   
+        if(apod.date === 'Infinito'){
+            setDia(30)
+            return
+        }
+    
+    }, [less])
+
+// console.log('add',add)
+
+    useEffect(() => {
+   
+        if(apod.date === 'Infinito'){
+            setDia(1)
+            // setMes(mes+1)
+            return
+        }
+    
+    }, [add])
+    
+    // useEffect(() => {
+   
+    //     if(apod.date === 'Infinito'){
+    //         setDia(1)
+    //         return
+    //     }
+    
+    // }, [])
+        
+    
     const favori = () => {
         
         if(isFav != undefined ){
             Alert.alert(
-                "Ya esta en Favoritos",
-                "Intenta con otra Fotografia",
+                "Is already in favorites",
+                "Try with another pick",
                 [
                   {
                     text: "Ok",
@@ -124,7 +168,7 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
       
 
 
-       {    hoy == dia ? null : 
+       {    hoy == dia && mesHoy == mes ? null : 
 
            <TouchableOpacity
            onPress={( ) => handleAdd() }

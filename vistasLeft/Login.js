@@ -4,8 +4,9 @@ import { Alert, Button, Dimensions, ImageBackground, ScrollView, StyleSheet, Tex
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn, signUp, invitado } from '../store/actions/name.actions';
 
+// export const image = { uri: "http://papers.co/wallpaper/papers.co-nc27-night-sky-dark-star-lights-tree-nature-bw-dark-4-wallpaper.jpg" }
 export const image = { uri: "https://w0.peakpx.com/wallpaper/393/838/HD-wallpaper-space-planets-straes.jpg" }
-
+const background = { uri: "http://papers.co/wallpaper/papers.co-nc27-night-sky-dark-star-lights-tree-nature-bw-dark-4-wallpaper.jpg" }
 
 export const Login = () => {
 
@@ -66,10 +67,11 @@ export const Login = () => {
        
 
         <View style={styles.containerRegistro} >
+        
 
             
         
-            <Text style={{marginLeft:47, marginTop:15,marginBottom:15,fontSize:16}}>Email</Text>
+            <Text style={{marginLeft:47, marginTop:15,marginBottom:15,fontSize:16,color:'yellow'}}>Email</Text>
             <TextInput
             style={styles.input}
             backgroundColor='white'
@@ -78,7 +80,7 @@ export const Login = () => {
             value={usuario.email}
             autoCapitalize='none'
             />
-            <Text style={{marginLeft:47, marginTop:15,marginBottom:15,fontSize:16}}>Password</Text>
+            <Text style={{marginLeft:47, marginTop:15,marginBottom:15,fontSize:16,color:'yellow'}}>Password</Text>
             <TextInput
             style={{...styles.input, marginBottom:20}}
             backgroundColor='white'
@@ -109,6 +111,9 @@ export const Login = () => {
             <Text style={{textAlign:'center', fontSize:15, marginTop:20, color:'green'}} >Entrar como invitado</Text>
           </TouchableOpacity>
 
+
+          
+
         </View>
 
         </View>
@@ -123,11 +128,12 @@ const styles = StyleSheet.create({
 
         width:390,
         height:400 ,
-        borderWidth:2,
-        borderColor:'black',
+        borderWidth:1,
+        borderColor:'yellow',
         borderRadius:10,
         justifyContent:'center',
-        backgroundColor:'white',
+        // backgroundColor:'black',
+        
         
 
 

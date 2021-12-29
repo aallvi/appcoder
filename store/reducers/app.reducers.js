@@ -30,11 +30,11 @@ const appreducer = (state=initialState,action) => {
             return{
                 ...state,
                favoritos: action.payload.map(favs => new Favoritos(
-                   favs.title,
-                   favs.copyright,
-                   favs.date,
-                   favs.explanation,
-                   favs.url
+                   favs.fav.title,
+                   favs.fav.copyright,
+                   favs.fav.date,
+                   favs.fav.explanation,
+                   favs.fav.url
                ))
               
                 

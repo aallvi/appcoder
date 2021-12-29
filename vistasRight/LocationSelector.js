@@ -47,7 +47,7 @@ export const LocationSelector = props => {
         >
        
             <View style={{backgroundColor:'green',marginTop:50,height:40,justifyContent:'center'}} >
-            <Text style={{color:'white',textAlign:'center',fontSize:20}} >Obtener Ubicacion</Text>
+            <Text style={{color:'white',textAlign:'center',fontSize:20}} >Get Location</Text>
 
             </View>
         </TouchableHighlight>

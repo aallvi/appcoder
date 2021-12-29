@@ -7,6 +7,7 @@ const initialState = {
     userId: null,
     registrado: false,
     logeado: false,
+    uid:null
  
 }
 
@@ -26,7 +27,8 @@ const nameReducer = (state=initialState,action) => {
         case SIGN_IN:
             return{
                 ...state,
-               logeado: action.logeado
+               logeado: action.logeado,
+               uid: action.idUser
                 
             }
         case LOG_OUT:

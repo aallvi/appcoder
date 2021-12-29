@@ -1,4 +1,5 @@
-import { SIGN_IN_URL, SIGN_UP_URL } from "../../database";
+import { useSelector } from "react-redux";
+import { SIGN_IN_URL, SIGN_UP_URL, URL_API } from "../../database";
 
 
 export const SIGN_UP = 'SIGN_UP'
@@ -76,10 +77,12 @@ export const signIn = (email,password) => {
               })
 
               const data = await response.json()
+            //   console.log(data.localId)
             //    console.log(data.registered)
               dispatch({
                   type: SIGN_IN,
                   logeado: data.registered,
+                  idUser: data.localId
                  
               })
 

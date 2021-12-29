@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, Button, TouchableOpacity, Image, Dimensions, ScrollView, ImageBackground } from 'react-native';
 import moment from 'moment'
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const {width,height} =  Dimensions.get('window')
 
 
 export const Earth = () => {
- const {top} = useSafeAreaInsets()
 
- const fecha = moment().format('L');
- const fechadividida = fecha.split('/');
+    const fecha = moment().format('L');
+    const fechadividida = fecha.split('/');
 
- const [dia, setDia] = useState(fechadividida[1]-1)
- const [mes, setMes] = useState(fechadividida[0])
- const [ano, setAno] = useState(fechadividida[2])
+    const [dia, setDia] = useState(fechadividida[1]-1)
+    const [mes, setMes] = useState(fechadividida[0])
+    const [ano, setAno] = useState(fechadividida[2])
 
   const [img, setImg] = useState('')
   const [largonjson, setlargonjson] = useState(0)
@@ -33,8 +31,6 @@ export const Earth = () => {
         // console.log('largg',json.length)
 
         // console.log('cuantasson',json)
-
-
         setImg(json[cambiarCords].image)
         // console.log('tierra',json[cambiarCords].image)
         // console.log('cordenadas',json[cambiarCords].centroid_coordinates)
@@ -81,7 +77,7 @@ useEffect(() => {
         >
         <View style={styles.container} >
             <Text style={{marginTop:40,color:'white', fontSize:19, textAlign:'center'}} >Earth </Text>
-            <Text style={{color:'yellow', textAlign:'center', marginTop:10}}>{ano}-{mes}-{dia}</Text>
+            <Text style={{color:'yellow', textAlign:'center', marginTop:10}}>{dia}-{mes}-{ano}</Text>
             <View style={styles.imageContainer}>
 
             <Image
@@ -94,12 +90,12 @@ useEffect(() => {
             <ImageBackground 
         
         source={background}
-        style={{justifyContent:'center',width:width}}
+        style={{width:width,flex:1}}
         
         >
             
-            <Text style={{color:'yellow',textAlign:'center'}} >
-               Latitude : {coordenadas.lat} - 
+            <Text style={{color:'yellow',textAlign:'center',marginTop:20}} >
+               Latitude : {coordenadas.lat} & 
                Longitude : {coordenadas.lon}
             </Text>
             
@@ -111,9 +107,9 @@ useEffect(() => {
            
             </TouchableOpacity>
 
-            <Text style={{color:'yellow',textAlign:'center',fontSize:14,marginTop:10}} >
+            {/* <Text style={{color:'yellow',textAlign:'center',fontSize:12,marginTop:14}} >
                {info.caption}
-            </Text>
+            </Text> */}
 
             {/* <TouchableOpacity onPress={() => setDia(dia-1) } >
                 <Text style={{color:'white'}} > Back </Text>

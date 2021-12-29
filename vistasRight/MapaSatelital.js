@@ -36,7 +36,7 @@ export const MapaSatelital = ({latitud,longitud}) => {
 
           {/* <LocationSelector /> */}
 
-          <Text style={{color:'white', textAlign:'center',marginTop:20}} > Latitud: {latitud} & Longitud: {longitud}  </Text>
+          <Text style={{color:'yellow', textAlign:'center',marginTop:20}} > Latitude: {latitud} & Longitude: {longitud}  </Text>
         </View>
     )
 }
