@@ -3,7 +3,7 @@ import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableHighlight,Touc
 import { useDispatch, useSelector } from 'react-redux'
 import {Ionicons,FontAwesome} from '@expo/vector-icons'
 import { FavPaginador } from './FavPaginador'
-import { deleteFav,loadFavs } from '../store/actions/app.actions'
+import { deleteFav,deleteFavOnline,favorite,loadFavs,loadFavsOffline } from '../store/actions/app.actions'
 import { Modaldescription } from '../vistasLeft/Modaldescription'
 // import { Description } from '../vistasLeft/Description'
 
@@ -13,39 +13,69 @@ export const Favorite = () => {
 
 
 
-    const favoritos = useSelector(state => state.app.favoritos)
 
+    const favoritos = useSelector(state => state.app.favoritos)
+    const uid = useSelector(state => state.name.uid)
+    const dispatch = useDispatch()
+
+
+    console.log('idd',uid)
   // if(Object.keys(favoritos).length ===0) return null
 
-    console.log('favoritt',favoritos)
-
+    console.log('AEEEEEER',favoritos)
+   
+  
   
 
 
-    const dispatch = useDispatch()
     const [count, setCount] = useState(favoritos.length-1)
 
-
+console.log('count',count)
   
   useEffect(() => {
 
      setCount(favoritos.length-1)
 
-  }, [favoritos.length])
+  }, [favoritos])
 
  
-   
+  //  console.log()
+  const {title,copyright,date,explanation,url} = favoritos[favoritos.length-1]
 
-  const {title,copyright,date,explanation,url} = favoritos[count]
+     
+  
 
+
+ 
+  
    
     const deletf = () => {
-        setCount(count-1)
         // console.log('qesale',favoritos[count])
-         dispatch(deleteFav(favoritos[count]))
+        if(uid === null){
+          dispatch(deleteFav(favoritos[count]))
+        // setCount(count-1)
+              // console.log(favoritos[count])
+             console.log('borraronoff')
+             
+        }else{
+          dispatch(deleteFavOnline(favoritos[count]))
+         
+        }
+
+       
+// console.log('asd')
+   
          
     }
     const [modalVisible, setModalVisible] = useState(false)
+
+            //  console.log('tipouid',typeof uid)
+            //  console.log('ii',uid)
+
+
+             
+
+           
 
     return (
         <View style={{backgroundColor:'black',flex:1}} >
@@ -61,7 +91,7 @@ export const Favorite = () => {
             
 
              <View style={{ flex:1,justifyContent:'flex-end',marginRight:20,flexDirection:'row'}} >
-                  <Text style={{color:'yellow',alignSelf:'center',marginRight:10}} > Quitar de Favs</Text>
+                  <Text style={{color:'yellow',alignSelf:'center',marginRight:10}} >Delete from Favs</Text>
 
                     <TouchableOpacity
                     onPress={() => deletf()}

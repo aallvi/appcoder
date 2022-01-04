@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Ionicons} from '@expo/vector-icons'
 import { useDispatch,useSelector } from 'react-redux';
 import { Alert, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { favorite } from '../store/actions/app.actions';
+import { favorite, favoriteOffline } from '../store/actions/app.actions';
 
 
 
@@ -15,9 +15,9 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
   const [add, setadd] = useState(false)
   const [less, setless] = useState(false)
    
-//   console.log('hoy',hoy)
-//   console.log('dia',dia)
-//   console.log('mes',mes)
+//   console.log('hoy',typeof hoy)
+//   console.log('dia',typeof dia)
+//   console.log('mes',typeof mes)
 //   console.log('apod',apod)
 
   const [objFavorito, setObjFavorito] = useState({})
@@ -41,24 +41,45 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
        setless(!less)
 
         setDia(dia-1)
+
        if(dia===1){
            setDia(31)
-           setMes(mes-1)
-          
+           if(mes=='01'){
+               setMes(12)
+               setAno(2021)
+           }else {
+            setMes(mes-1)
+
+           }
+          return
        }
+
+
+       
        
     }
 
-  
-    
     const handleAdd = () => {
         setadd(!add)
    
         setDia(dia+1)
         if(dia==31){
             setDia(1)
-            setMes(mes+1)
+            if(mes == '12'){
+                setMes(1)
+                setAno(2022)
+            }else {
+                setMes(mes+1)
+            }
+            return
         }
+
+        // if(dia == 31 && ano ==2021 && mes == 12){
+        //     setDia(1)
+        //     setMes(1)
+        //     setAno(2022)
+        //     return
+        // }
         // setDia(dia-1)
 
     }
@@ -94,7 +115,9 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
     
     // }, [])
         
-    
+    const uid = useSelector(state => state.name.uid)
+
+
     const favori = () => {
         
         if(isFav != undefined ){
@@ -110,17 +133,31 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
               );
               return
         }
+        if(uid === null){
+            dispatch(favoriteOffline({
+                title: objFavorito.title,
+                copyright: objFavorito.copyright,
+                date: objFavorito.date,
+                explanation: objFavorito.explanation,
+                url: objFavorito.url
+            }))
+        console.log('añadiendooff')
 
-        console.log('añadiendo')
-        dispatch(favorite({
-            title: objFavorito.title,
-            copyright: objFavorito.copyright,
-            date: objFavorito.date,
-            explanation: objFavorito.explanation,
-            url: objFavorito.url
-        }))
+            
+          }else {
+            console.log('añadiendo')
+            dispatch(favorite({
+                title: objFavorito.title,
+                copyright: objFavorito.copyright,
+                date: objFavorito.date,
+                explanation: objFavorito.explanation,
+                url: objFavorito.url
+            }))
 
 
+          }
+
+    
     }
 
     useEffect(() => {

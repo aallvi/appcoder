@@ -10,10 +10,11 @@ export const Earth = () => {
     const fecha = moment().format('L');
     const fechadividida = fecha.split('/');
 
-    const [dia, setDia] = useState(fechadividida[1]-1)
+    const [dia, setDia] = useState((fechadividida[1]-1).toString())
     const [mes, setMes] = useState(fechadividida[0])
     const [ano, setAno] = useState(fechadividida[2])
-
+// console.log('mes',mes)
+// console.log('ano',ano)
   const [img, setImg] = useState('')
   const [largonjson, setlargonjson] = useState(0)
   const [coordenadas, setcoordenadas] = useState('')
@@ -21,12 +22,26 @@ export const Earth = () => {
   const [cambiarCords, setcambiarCords] = useState(0)
   const [info, setinfo] = useState('')
 
+
     const consultarEarth = async ()=> {
+
+       if(dia.length === 1){
+         setDia(0+dia)
+       }
+
+
         const response = await fetch(
           `https://api.nasa.gov/EPIC/api/natural/date/${ano}-${mes}-${dia}?api_key=9SeJAnzjxX5SfJx9uNrwjwivEb9b8bh5qexvggT7`
         );
+        // console.log('response',response)
+
         const json = await response.json();
+
+        //  console.log('largodia',dia)
+
+
         setlargonjson(json.length)
+        console.log('vvvvv',json)
 
         // console.log('largg',json.length)
 
@@ -42,10 +57,12 @@ export const Earth = () => {
       }
 
       const [url, setUrl] = useState(`https://api.nasa.gov/EPIC/archive/natural/${ano}/${mes}/${dia}/png/${img}.png?api_key=9SeJAnzjxX5SfJx9uNrwjwivEb9b8bh5qexvggT7`)
-    
+    // console.log('url',url)
   
  
       const changeCords = () => {
+ 
+
            
         if (largonjson-1 == cambiarCords){
 

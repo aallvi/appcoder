@@ -11,7 +11,8 @@ export const INVITADO = 'INVITADO'
 
 export const logout = () => ({
     type: LOG_OUT,
-    payload: false
+    payload: false,
+    
 })
 
 export const invitado = () => ({
@@ -37,7 +38,6 @@ export const signUp = (email,password) => {
                   }),
 
               })
-
               const data = await response.json()
                console.log(data)
               dispatch({

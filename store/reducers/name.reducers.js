@@ -34,7 +34,8 @@ const nameReducer = (state=initialState,action) => {
         case LOG_OUT:
             return{
                 ...state,
-               logeado: action.payload
+               logeado: action.payload,
+               uid: null
                 
             }
         case LOG_OUT:

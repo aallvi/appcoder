@@ -2,6 +2,7 @@ import React, { useEffect, useState,} from 'react'
 import { Alert, Button, Image, StyleSheet, Text, TextInput, TouchableHighlight,TouchableOpacity, View } from 'react-native'
 import * as Location from 'expo-location'
 import { MapaSatelital } from './MapaSatelital';
+import { Notification } from '../Notification';
 
 
 
@@ -60,11 +61,13 @@ export const LocationSelector = props => {
        
 
       </>
-      :  <Text style={{textAlign:'center',marginTop:20,color:'white'}} > Comparte ubicacion para sacar una foto satelital directamente de la nasa</Text>
+      :  <Text style={{textAlign:'center',marginTop:20,color:'white'}} > Share your location to take a satellite photo</Text>
         }
  
       
             
         </View>
+
+    // <Notification />
     )
 }

@@ -74,20 +74,22 @@ export const Login = () => {
             <Text style={{marginLeft:47, marginTop:15,marginBottom:15,fontSize:16,color:'yellow'}}>Email</Text>
             <TextInput
             style={styles.input}
-            backgroundColor='white'
+            backgroundColor='black'
             placeholder='Tu email'
             onChangeText={(text) => handleChange(text,'email')  }
             value={usuario.email}
             autoCapitalize='none'
+            placeholderTextColor='white'
             />
             <Text style={{marginLeft:47, marginTop:15,marginBottom:15,fontSize:16,color:'yellow'}}>Password</Text>
             <TextInput
             style={{...styles.input, marginBottom:20}}
-            backgroundColor='white'
+            backgroundColor='black'
             value={usuario.password}
             autoCapitalize='none'
             secureTextEntry
             placeholder='Tu clave'
+            placeholderTextColor='white'
             onChangeText={(text) => handleChange(text,'password')  }
             />
             
@@ -101,10 +103,10 @@ export const Login = () => {
                 <Text style={{textAlign:'center',fontSize:17,color:'white'}} >Iniciar Sesion</Text>
             </TouchableOpacity>
            
-          <Text style={{textAlign:'center', marginTop:20}} >¿No tienes usuario?</Text>
+          <Text style={{textAlign:'center', marginTop:20, color:'white'}} >¿No tienes usuario?</Text>
 
           <TouchableOpacity onPress={() => navigation.navigate('Register') } >
-            <Text style={{textAlign:'center', fontSize:17, marginTop:20, color:'blue'}} >Registrate</Text>
+            <Text style={{textAlign:'center', fontSize:17, marginTop:20, color:'yellow'}} >Registrate</Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() =>Logininvitado() } >
@@ -132,7 +134,7 @@ const styles = StyleSheet.create({
         borderColor:'yellow',
         borderRadius:10,
         justifyContent:'center',
-        // backgroundColor:'black',
+        backgroundColor:'black',
         
         
 
@@ -142,8 +144,10 @@ const styles = StyleSheet.create({
     input: {
         width:250,
         borderBottomWidth:1,
-        borderBottomColor:'black',
-        alignSelf:'center'
+        borderBottomColor:'white',
+        alignSelf:'center',
+        color:'white'
+        
     }
 
   });

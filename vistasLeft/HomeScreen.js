@@ -7,8 +7,9 @@ import { logout } from '../store/actions/name.actions';
 import { Musica } from '../Musica';
 import { Paginador } from './Paginador';
 import moment from 'moment'
-import { favorite, loadFavs } from '../store/actions/app.actions';
+import { favorite, loadFavs, loadFavsOffline, resetFav } from '../store/actions/app.actions';
 import { Modaldescription } from './Modaldescription';
+import { Notification } from '../Notification';
 // import { Description } from './Modal';
 
 
@@ -62,6 +63,7 @@ export const HomeScreen = () => {
 
 const handleLogout = () => {
   dispatch(logout())
+  dispatch(resetFav())
 }
 
 
@@ -69,11 +71,25 @@ const handleLogout = () => {
     consultarNasa()
   }, [dia])
 
+  const uid = useSelector(state => state.name.uid)
+  const favoritos = useSelector(state => state.app.favoritos)
+  
   useEffect(() => {
-    
-    dispatch(loadFavs())
+    if(uid == null){
+      dispatch(loadFavsOffline())
+      // return
+      console.log('cargaronoffline')
+    }else {
+
+      dispatch(loadFavs())
     console.log('cargaron')
+
+     }
+
+    
   }, [])
+ 
+ 
 
 
   const [modalVisible, setModalVisible] = useState(false)
@@ -84,11 +100,12 @@ const handleLogout = () => {
     return (
        <> 
         <View >
+          
        <Modaldescription explanation={explanation} modalVisible={modalVisible} setModalVisible={setModalVisible} />
        </View>
-
+      <Notification />
         <View style={styles.container}>
-         
+        
             <TouchableOpacity 
             onPress={() => handleLogout() }
             style={{alignItems:'flex-end',marginRight:20}}
@@ -102,7 +119,7 @@ const handleLogout = () => {
           <View style={styles.imageContainer} >
 
           <Text style={{marginTop:top,color:'white', fontSize:19, textAlign:'center'}} > {title} </Text>
-          <Paginador setDia={setDia} dia={dia} mes={mes} setMes={setMes} apod={apod} />
+          <Paginador setDia={setDia} dia={dia} mes={mes} setMes={setMes} apod={apod} setAno={setAno} ano={ano} />
           
           
           {/* <Description explanation={explanation} url={url} date={date} copyright={copyright} /> */}
@@ -123,6 +140,7 @@ const handleLogout = () => {
               
               </TouchableOpacity>
 
+
           
           {/* Fecha, paginador, copyright */}
           <View style={{flexDirection:'row', justifyContent:'space-between', marginHorizontal:8, marginTop:5}} >
@@ -136,7 +154,7 @@ const handleLogout = () => {
  
           </View >
 
-       
+         
         </View>
        
         </>
