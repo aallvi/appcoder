@@ -7,6 +7,8 @@ import { favorite, loadFavs, loadFavsOffline } from '../store/actions/app.action
 export const Favportada = () => {
 
     const favoritos = useSelector(state => state.app.favoritos)
+    const contador = useSelector(state => state.app.contador)
+
     const dispatch = useDispatch()
 
 
@@ -26,6 +28,22 @@ export const Favportada = () => {
     
         
       }, [])
+
+      
+    useEffect(() => {
+        if(uid == null){
+          dispatch(loadFavsOffline())
+          // return
+          console.log('cargaronoffline')
+        }else {
+    
+          dispatch(loadFavs())
+        console.log('cargaron')
+    
+         }
+    
+        
+      }, [contador])
 
 
 
