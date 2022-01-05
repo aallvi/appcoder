@@ -2,7 +2,9 @@ import React, { useEffect, useState,} from 'react'
 import { Alert, Button, Image, StyleSheet, Text, TextInput, TouchableHighlight,TouchableOpacity, View } from 'react-native'
 import * as Location from 'expo-location'
 import { MapaSatelital } from './MapaSatelital';
-import { Notification } from '../Notification';
+import { Player } from '../Player';
+// import { Notification } from '../Notification';
+// import { Player } from '../Player';
 
 
 
@@ -55,13 +57,13 @@ export const LocationSelector = props => {
 
         {
       
-      pickedLocation? 
-      < >
-       <MapaSatelital latitud={pickedLocation.coords.latitude} longitud={pickedLocation.coords.longitude}/>
-       
+            pickedLocation? 
+            < >
+            <MapaSatelital latitud={pickedLocation.coords.latitude} longitud={pickedLocation.coords.longitude}/>
+            
 
-      </>
-      :  <Text style={{textAlign:'center',marginTop:20,color:'white'}} > Share your location to take a satellite photo</Text>
+            </>
+            :  <Text style={{textAlign:'center',marginTop:20,color:'white'}} > Share your location to take a satellite photo</Text>
         }
  
       
@@ -69,5 +71,7 @@ export const LocationSelector = props => {
         </View>
 
     // <Notification />
+    // <Player />
+         
     )
 }

@@ -3,7 +3,8 @@ import { FAVORITE,DELETE_FAVORITE, LOAD_FAVS, LOAD_FAVS_OFFLINE, FAVORITE_OFFLIN
 
 const initialState = {
    
-favoritos: []
+favoritos: [],
+contador: 1
  
 }
 
@@ -15,7 +16,8 @@ const appreducer = (state=initialState,action) => {
         case FAVORITE:
             return{
                 ...state,
-               favoritos: [...state.favoritos,action.payload]
+               favoritos: [...state.favoritos,action.payload],
+               contador:state.contador +1
               
                 
             }

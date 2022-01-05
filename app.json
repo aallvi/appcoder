@@ -1,17 +1,17 @@
 {
   "expo": {
-    "name": "appcoder",
-    "slug": "appcoder",
+    "name": "Applanetary",
+    "slug": "Applanetary",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/space.png",
+    "icon": "./assets/planeta-tierra.png",
     "notification":{
       "icon":"./assets/space.png"
    },
     "splash": {
-      "image": "./assets/space.png",
+      "image": "./assets/porta.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -20,13 +20,21 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier":"com.univers.alvi",
+      "buildNumber":"1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package":"com.univers.alvi",
+      "versionCode":1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/space.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "permissions":[
+        "ACCESS_FINE_LOCATION",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

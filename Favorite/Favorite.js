@@ -15,6 +15,7 @@ export const Favorite = () => {
 
 
     const favoritos = useSelector(state => state.app.favoritos)
+    const contador = useSelector(state => state.app.contador)
     const uid = useSelector(state => state.name.uid)
     const dispatch = useDispatch()
 
@@ -24,7 +25,7 @@ export const Favorite = () => {
 
     console.log('AEEEEEER',favoritos)
    
-  
+  console.log('contadoooor',contador)
   
 
 
@@ -36,18 +37,9 @@ console.log('count',count)
 
      setCount(favoritos.length-1)
 
-  }, [favoritos])
+  }, [contador])
 
  
-  //  console.log()
-  const {title,copyright,date,explanation,url} = favoritos[favoritos.length-1]
-
-     
-  
-
-
- 
-  
    
     const deletf = () => {
         // console.log('qesale',favoritos[count])
@@ -61,7 +53,11 @@ console.log('count',count)
           dispatch(deleteFavOnline(favoritos[count]))
          
         }
-
+      if(count===0){
+        setCount(0)
+        return
+      }
+      setCount(count-1)
        
 // console.log('asd')
    
@@ -72,6 +68,7 @@ console.log('count',count)
             //  console.log('tipouid',typeof uid)
             //  console.log('ii',uid)
 
+            const {title,copyright,date,explanation,url} = favoritos[count]
 
              
 

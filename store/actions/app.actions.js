@@ -35,17 +35,26 @@ export const favorite = (title,copyright,date,explanation,url) => {
                 })
             })
             const resp= await response.json()
-            console.log(resp)
+            console.log('sera?',resp.name)
+            const id = resp.name
+
+            
+
+            // if(resp.name === String){
+                dispatch({
+                    type: FAVORITE,
+                    payload: title,
+                    copyright,
+                    date,
+                    explanation,
+                    url,
+                    
+                });
 
 
-            dispatch({
-                type: FAVORITE,
-                payload: title,
-                copyright,
-                date,
-                explanation,
-                url
-            });
+            // }
+
+            
             // console.log('result',result)
             
 

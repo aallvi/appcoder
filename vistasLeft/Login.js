@@ -6,7 +6,7 @@ import { signIn, signUp, invitado } from '../store/actions/name.actions';
 
 // export const image = { uri: "http://papers.co/wallpaper/papers.co-nc27-night-sky-dark-star-lights-tree-nature-bw-dark-4-wallpaper.jpg" }
 export const image = { uri: "https://w0.peakpx.com/wallpaper/393/838/HD-wallpaper-space-planets-straes.jpg" }
-const background = { uri: "http://papers.co/wallpaper/papers.co-nc27-night-sky-dark-star-lights-tree-nature-bw-dark-4-wallpaper.jpg" }
+// const background = { uri: "http://papers.co/wallpaper/papers.co-nc27-night-sky-dark-star-lights-tree-nature-bw-dark-4-wallpaper.jpg" }
 
 export const Login = () => {
 
@@ -75,7 +75,7 @@ export const Login = () => {
             <TextInput
             style={styles.input}
             backgroundColor='black'
-            placeholder='Tu email'
+            placeholder='Your email'
             onChangeText={(text) => handleChange(text,'email')  }
             value={usuario.email}
             autoCapitalize='none'
@@ -88,7 +88,7 @@ export const Login = () => {
             value={usuario.password}
             autoCapitalize='none'
             secureTextEntry
-            placeholder='Tu clave'
+            placeholder='Your password'
             placeholderTextColor='white'
             onChangeText={(text) => handleChange(text,'password')  }
             />
@@ -100,17 +100,17 @@ export const Login = () => {
             style={{backgroundColor:'blue', width:200, alignSelf:'center', borderWidth:0,borderRadius:200,marginTop:10}}
             onPress={()=> register() }
             >
-                <Text style={{textAlign:'center',fontSize:17,color:'white'}} >Iniciar Sesion</Text>
+                <Text style={{textAlign:'center',fontSize:17,color:'white'}} >Sign In</Text>
             </TouchableOpacity>
            
-          <Text style={{textAlign:'center', marginTop:20, color:'white'}} >¿No tienes usuario?</Text>
+          <Text style={{textAlign:'center', marginTop:20, color:'white'}} >¿Don't have a user?</Text>
 
           <TouchableOpacity onPress={() => navigation.navigate('Register') } >
-            <Text style={{textAlign:'center', fontSize:17, marginTop:20, color:'yellow'}} >Registrate</Text>
+            <Text style={{textAlign:'center', fontSize:17, marginTop:20, color:'yellow'}} >Sign Up</Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() =>Logininvitado() } >
-            <Text style={{textAlign:'center', fontSize:15, marginTop:20, color:'green'}} >Entrar como invitado</Text>
+            <Text style={{textAlign:'center', fontSize:15, marginTop:20, color:'green'}} >Enter as Guest</Text>
           </TouchableOpacity>
 
 

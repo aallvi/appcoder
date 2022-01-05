@@ -4,12 +4,12 @@ import { StyleSheet, Text, View, Button, TouchableOpacity, Image, Dimensions, Sc
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/actions/name.actions';
-import { Musica } from '../Musica';
 import { Paginador } from './Paginador';
 import moment from 'moment'
-import { favorite, loadFavs, loadFavsOffline, resetFav } from '../store/actions/app.actions';
+import {  loadFavs, loadFavsOffline, resetFav } from '../store/actions/app.actions';
 import { Modaldescription } from './Modaldescription';
-import { Notification } from '../Notification';
+import { Player } from '../Player';
+// import { Notification } from '../Notification';
 // import { Description } from './Modal';
 
 
@@ -23,6 +23,8 @@ export const HomeScreen = () => {
   
   //Datos que trae la api
   const {title,hdurl,copyright,date,explanation,url} = apod
+  // const urldividida = url.split('/');
+    // console.log(url.split('/')) 
 
   // Usamos Moment js para definir la fecha de hoy, la modificamos para ingresarla en la consulta a la api
  const fecha = moment().format('L');
@@ -59,7 +61,8 @@ export const HomeScreen = () => {
     }
     
   }
-  
+
+
 
 const handleLogout = () => {
   dispatch(logout())
@@ -69,6 +72,10 @@ const handleLogout = () => {
 
   useEffect(() => {
     consultarNasa()
+
+    // const urldividida = url.split('/');
+    // console.log(urldividida) 
+
   }, [dia])
 
   const uid = useSelector(state => state.name.uid)
@@ -90,6 +97,7 @@ const handleLogout = () => {
   }, [])
  
  
+// console.log('url',url)
 
 
   const [modalVisible, setModalVisible] = useState(false)
@@ -103,14 +111,14 @@ const handleLogout = () => {
           
        <Modaldescription explanation={explanation} modalVisible={modalVisible} setModalVisible={setModalVisible} />
        </View>
-      <Notification />
+      {/* <Notification /> */}
         <View style={styles.container}>
         
             <TouchableOpacity 
             onPress={() => handleLogout() }
             style={{alignItems:'flex-end',marginRight:20}}
             >
-              <Text style={{fontSize:15, color:'red'}} >Cerrar Sesion</Text>
+              <Text style={{fontSize:15, color:'red'}} >Logout</Text>
             </TouchableOpacity>
             
 
@@ -127,16 +135,21 @@ const handleLogout = () => {
          
    
           <TouchableOpacity onPress={() => setModalVisible(true)  }  >
-                <Image
-                  
-                  source={{ uri:url}}
-                  style={styles.image}
-                  
 
+           
+              <Image
                   
-                 />
+              source={{ uri:url}}
+              style={styles.image}
+              
 
-                 {/* <Musica /> */}
+              
+             />
+
+            {/* <Player /> */}
+                
+
+                 
               
               </TouchableOpacity>
 
