@@ -41,7 +41,7 @@ export const Earth = () => {
 
 
         setlargonjson(json.length)
-        console.log('vvvvv',json)
+        // console.log('vvvvv',json)
 
         // console.log('largg',json.length)
 
@@ -77,7 +77,7 @@ export const Earth = () => {
 useEffect(() => {
     
     consultarEarth() 
-    console.log(largonjson)
+    // console.log(largonjson)
     // console.log('url',url)
     
 }, [dia,cambiarCords])

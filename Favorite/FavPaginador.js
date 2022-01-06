@@ -9,10 +9,10 @@ import { atras, favorite } from '../store/actions/app.actions';
 
 export const FavPaginador = ({setCount,data,count}) => {
 
-console.log('que es',data)
+// console.log('que es',data)
 
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     
 
 

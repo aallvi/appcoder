@@ -6,6 +6,7 @@ export const SIGN_UP = 'SIGN_UP'
 export const SIGN_IN = 'SIGN_IN'
 export const LOG_OUT = 'LOG_OUT'
 export const INVITADO = 'INVITADO'
+export const CLEAN_REGISTER = 'CLEAN_REGISTER'
 
 
 
@@ -18,6 +19,10 @@ export const logout = () => ({
 export const invitado = () => ({
     type: INVITADO,
     payload: true
+})
+export const clean = () => ({
+    type: CLEAN_REGISTER,
+    payload: false
 })
 
 
@@ -39,12 +44,39 @@ export const signUp = (email,password) => {
 
               })
               const data = await response.json()
-               console.log(data)
-              dispatch({
-                  type: SIGN_UP,
-                  token: data.idToken,
-                  userId: data.localId
-              })
+              
+              if(data.error){
+
+                dispatch({
+                    type: SIGN_UP,
+                    token: data.idToken,
+                    userId: data.localId,
+                    register:false,
+                    dataRegister: data
+                })
+
+
+
+              }else {
+
+                dispatch({
+                    type: SIGN_UP,
+                    token: data.idToken,
+                    userId: data.localId,
+                    register:true,
+                    
+                })
+
+
+
+              }
+
+               
+
+
+              
+            //    console.log(data)
+              
 
               
           } catch (error) {
@@ -77,14 +109,30 @@ export const signIn = (email,password) => {
               })
 
               const data = await response.json()
-            //   console.log(data.localId)
+            //   console.log(data)
             //    console.log(data.registered)
-              dispatch({
-                  type: SIGN_IN,
-                  logeado: data.registered,
-                  idUser: data.localId
-                 
-              })
+            if(data.error){
+
+                dispatch({
+                    type: SIGN_IN,
+                    logeado: data.registered,
+                    idUser: data.localId,
+                    data:data
+                    
+                })
+
+            }else {
+
+                dispatch({
+                    type: SIGN_IN,
+                    logeado: data.registered,
+                    idUser: data.localId,
+                
+                    
+                })
+
+            }
+              
 
               
           } catch (error) {

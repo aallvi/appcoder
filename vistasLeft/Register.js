@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/core';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Alert, Button, ImageBackground, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { signUp } from '../store/actions/name.actions';
+import { clean, signUp } from '../store/actions/name.actions';
 import validator from 'validator';
 import { image } from './Login';
 
@@ -11,12 +11,17 @@ export const Register = () => {
    
 
   const user = useSelector(state => state.name.registrado)
+  const dataRegister = useSelector(state => state.name.dataRegister)
+
+  console.log('user',user)
+  console.log('dataRegister',dataRegister)
+
   const navigation = useNavigation()
 
   const dispatch = useDispatch()
 
 
- console.log(user)
+//  console.log(user)
     const [usuario, setUsuario] = useState({
         
          email:'',
@@ -35,6 +40,24 @@ export const Register = () => {
         //  console.log(usuario)
     }
 
+    useEffect(() => {
+
+      if(dataRegister){
+              Alert.alert(
+                "Email already exist",
+                "Try again or create a user",
+                [
+                  {
+                    text: "Ok",
+                  },
+                ],
+                
+              );
+        }
+
+      
+    }, [dataRegister])
+
     const register = () => {
         const {email,password} = usuario
 
@@ -50,7 +73,7 @@ export const Register = () => {
               );
                      return
 
-             return
+            
         } else if (!validator.isEmail(email)){
             Alert.alert(
                 "Ingresa Email valido",
@@ -88,7 +111,13 @@ export const Register = () => {
 
         dispatch(signUp(email,password))
         
-        
+    //     
+
+    }
+
+    const cleanRegister = () => {
+      dispatch(clean())
+      navigation.navigate('Login')
 
     }
 
@@ -113,14 +142,14 @@ export const Register = () => {
                 
                 user ?
                 <>
-                <Text style={{textAlign:'center', fontSize:17}} > ¡Ya estas registrado!  </Text>
+                <Text style={{textAlign:'center', fontSize:17}} > ¡Good Trip!  </Text>
 
                 <TouchableOpacity 
                 
-                onPress={ () => navigation.navigate('Login') }
+                onPress={ () => cleanRegister()}
 
                 >
-                    <Text style={{textAlign:'center', fontSize:20, color:'green', marginTop:20}} >Iniciar Sesion</Text>
+                    <Text style={{textAlign:'center', fontSize:20, color:'green', marginTop:20}} >Sign In</Text>
                 </TouchableOpacity>
 
                 </>
@@ -133,7 +162,7 @@ export const Register = () => {
             <TextInput
             style={styles.input}
             backgroundColor='white'
-            placeholder='Tu email'
+            placeholder='Your Intergalactic Email'
             onChangeText={(text) => handleChange(text,'email')  }
             value={usuario.email}
             autoCapitalize='none'
@@ -145,18 +174,18 @@ export const Register = () => {
             value={usuario.password}
             autoCapitalize='none'
             secureTextEntry
-            placeholder='Tu clave'
+            placeholder='Your Intergalactic Password'
             onChangeText={(text) => handleChange(text,'password')  }
             />
 
-            <Text style={{marginLeft:47, marginTop:15,marginBottom:15,fontSize:16}}> Repetir Password</Text>
+            <Text style={{marginLeft:47, marginTop:15,marginBottom:15,fontSize:16}}> Repeat Password</Text>
             <TextInput
             style={{...styles.input, marginBottom:20}}
             backgroundColor='white'
             value={repeatPassword}
             autoCapitalize='none'
             secureTextEntry
-            placeholder='Repite la clave'
+            placeholder='Password again'
             onChangeText={(text) => setRepeatPassword(text)  }
             />
 
@@ -172,17 +201,17 @@ export const Register = () => {
             style={{backgroundColor:'blue', width:200, alignSelf:'center', borderWidth:0,borderRadius:200,marginTop:10}}
             onPress={()=> register() }
             >
-                <Text style={{textAlign:'center',fontSize:17,color:'white'}} >Registrarse</Text>
+                <Text style={{textAlign:'center',fontSize:17,color:'white'}} >Register</Text>
             </TouchableOpacity>
 
 
-            <Text style={{textAlign:'center', marginTop:20}} >¿Ya tienes Usuario?</Text>
+            <Text style={{textAlign:'center', marginTop:20}} >¿Already have user?</Text>
 
             <TouchableOpacity
             style={{marginTop:20}}
             onPress={()=> navigation.navigate('Login') }
             >
-                <Text style={{textAlign:'center',fontSize:17,color:'blue'}} >Iniciar Sesion</Text>
+                <Text style={{textAlign:'center',fontSize:17,color:'blue'}} >Sign In</Text>
             </TouchableOpacity>
 
 

@@ -1,4 +1,4 @@
-import { LOG_OUT, SIGN_IN, SIGN_UP, INVITADO} from "../actions/name.actions";
+import { LOG_OUT, SIGN_IN, SIGN_UP, INVITADO, CLEAN_REGISTER} from "../actions/name.actions";
 
 
 const initialState = {
@@ -7,7 +7,9 @@ const initialState = {
     userId: null,
     registrado: false,
     logeado: false,
-    uid:null
+    uid:null,
+    data:null,
+    dataRegister:null
  
 }
 
@@ -21,14 +23,16 @@ const nameReducer = (state=initialState,action) => {
                 ...state,
                token: action.token,
                userId: action.userId,
-               registrado: true
+               registrado: action.register,
+               dataRegister:action.dataRegister
                 
             }
         case SIGN_IN:
             return{
                 ...state,
                logeado: action.logeado,
-               uid: action.idUser
+               uid: action.idUser,
+               data: action.data
                 
             }
         case LOG_OUT:
@@ -49,6 +53,12 @@ const nameReducer = (state=initialState,action) => {
             return{
                 ...state,
                logeado: action.payload
+                
+            }
+        case CLEAN_REGISTER:
+            return{
+                ...state,
+               registrado: action.payload
                 
             }
        

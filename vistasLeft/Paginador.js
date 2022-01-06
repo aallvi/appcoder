@@ -141,11 +141,11 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
                 explanation: objFavorito.explanation,
                 url: objFavorito.url
             }))
-        console.log('añadiendooff')
+        // console.log('añadiendooff')
 
             
           }else {
-            console.log('añadiendo')
+            // console.log('añadiendo')
             dispatch(favorite({
                 title: objFavorito.title,
                 copyright: objFavorito.copyright,

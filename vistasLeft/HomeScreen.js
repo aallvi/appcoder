@@ -85,11 +85,11 @@ const handleLogout = () => {
     if(uid == null){
       dispatch(loadFavsOffline())
       // return
-      console.log('cargaronoffline')
+      // console.log('cargaronoffline')
     }else {
 
       dispatch(loadFavs())
-    console.log('cargaron')
+    // console.log('cargaron')
 
      }
 

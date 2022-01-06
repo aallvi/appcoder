@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/core';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Alert, Button, Dimensions, ImageBackground, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn, signUp, invitado } from '../store/actions/name.actions';
@@ -10,7 +10,11 @@ export const image = { uri: "https://w0.peakpx.com/wallpaper/393/838/HD-wallpape
 
 export const Login = () => {
 
-  const logeado = useSelector(state => state.name.logeado)
+  const data = useSelector(state => state.name.data)
+ console.log('desdeLogin',data)
+   
+   
+
   const navigation = useNavigation()
 
   const dispatch = useDispatch()
@@ -38,7 +42,8 @@ export const Login = () => {
         const {email,password} = usuario
 
         dispatch(signIn(email,password))
-        
+
+    //     
 
     }
 
@@ -48,7 +53,22 @@ export const Login = () => {
     }
 
 
-    console.log('logeado',logeado)
+    useEffect(() => {
+        if(data){
+                    Alert.alert(
+                      "Email or Password Invalid",
+                      "Try again or create a user",
+                      [
+                        {
+                          text: "Ok",
+                        },
+                      ],
+                      
+                    );
+              }
+
+
+    }, [data])
 
 
     return (
@@ -110,7 +130,7 @@ export const Login = () => {
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() =>Logininvitado() } >
-            <Text style={{textAlign:'center', fontSize:15, marginTop:20, color:'green'}} >Enter as Guest</Text>
+            <Text style={{textAlign:'center', fontSize:15, marginTop:20, color:'white'}} >Enter as Guest</Text>
           </TouchableOpacity>
 
 

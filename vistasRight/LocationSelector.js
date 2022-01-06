@@ -26,9 +26,9 @@ export const LocationSelector = props => {
     }
 
     const handlePickLocation = async () => {
-        console.log('hola')
+        // console.log('hola')
         const isLocationOk = await verifyPermissions()
-        console.log('isLocationOk',isLocationOk)
+        // console.log('isLocationOk',isLocationOk)
         // if (!isLocationOk) return;
 
         const location = await Location.getCurrentPositionAsync({
@@ -37,7 +37,7 @@ export const LocationSelector = props => {
 
         setPickedLocation(location)
 
-        console.log(pickedLocation.coords)
+        // console.log(pickedLocation.coords)
 
     }
 

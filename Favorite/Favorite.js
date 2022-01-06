@@ -20,18 +20,18 @@ export const Favorite = () => {
     const dispatch = useDispatch()
 
 
-    console.log('idd',uid)
+    // console.log('idd',uid)
   // if(Object.keys(favoritos).length ===0) return null
 
-    console.log('AEEEEEER',favoritos)
+    // console.log('AEEEEEER',favoritos)
    
-  console.log('contadoooor',contador)
+  // console.log('contadoooor',contador)
   
 
 
     const [count, setCount] = useState(favoritos.length-1)
 
-console.log('count',count)
+// console.log('count',count)
   
   useEffect(() => {
 
@@ -47,7 +47,7 @@ console.log('count',count)
           dispatch(deleteFav(favoritos[count]))
         // setCount(count-1)
               // console.log(favoritos[count])
-             console.log('borraronoff')
+            //  console.log('borraronoff')
              
         }else{
           dispatch(deleteFavOnline(favoritos[count]))
