@@ -95,11 +95,11 @@ export const Login = () => {
             <TextInput
             style={styles.input}
             backgroundColor='black'
-            placeholder='Your email'
+            placeholder='Spacial Email'
             onChangeText={(text) => handleChange(text,'email')  }
             value={usuario.email}
             autoCapitalize='none'
-            placeholderTextColor='white'
+            placeholderTextColor='grey'
             />
             <Text style={{marginLeft:47, marginTop:15,marginBottom:15,fontSize:16,color:'yellow'}}>Password</Text>
             <TextInput
@@ -108,8 +108,8 @@ export const Login = () => {
             value={usuario.password}
             autoCapitalize='none'
             secureTextEntry
-            placeholder='Your password'
-            placeholderTextColor='white'
+            placeholder='Alien Password'
+            placeholderTextColor='grey'
             onChangeText={(text) => handleChange(text,'password')  }
             />
             

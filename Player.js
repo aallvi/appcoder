@@ -1,14 +1,14 @@
 import React, { useState, useCallback, useRef } from "react";
-import { Button, View, Alert } from "react-native";
+import { View, Alert,TouchableOpacity, Text,StyleSheet } from "react-native";
 import YoutubePlayer from "react-native-youtube-iframe";
 
-export const Player =() => {
+export const Player =({codeVideo,setModalVisible}) => {
   const [playing, setPlaying] = useState(false);
 
   const onStateChange = useCallback((state) => {
     if (state === "ended") {
       setPlaying(false);
-      Alert.alert("video has finished playing!");
+      Alert.alert("Video has finished playing!");
     }
   }, []);
 
@@ -17,14 +17,42 @@ export const Player =() => {
   }, []);
 
   return (
-    <View style={{backgroundColor:'red'}}>
+    <View style={{backgroundColor:'black', marginTop:80, marginBottom:30}}>
       <YoutubePlayer
-        height={300}
+        height={232}
         play={playing}
-        videoId={"2SnbMTQwDKM"}
+        videoId={codeVideo}
         onChangeState={onStateChange}
       />
-      <Button title={playing ? "pause" : "play"} onPress={togglePlaying} />
+
+       <View style={{alignItems:'center'}} >
+
+       <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)} >
+       
+       <Text style={{color:'white'}} > See Description </Text>
+
+      </TouchableOpacity>
+
+       </View>
+      
+      {/* <Button title='description' onPress={() => setModalVisible(true)} /> */}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  
+  button: {
+
+    // justifyContent:'center',
+    alignItems:'center',
+    borderWidth:1,
+    padding:5,
+    borderColor:'yellow',
+    marginTop:30,
+    borderRadius:20,
+    width:150
+
+  }
+
+});

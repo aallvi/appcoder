@@ -7,7 +7,7 @@ import { atras, favorite } from '../store/actions/app.actions';
 
 
 
-export const FavPaginador = ({setCount,data,count}) => {
+export const FavPaginador = ({setCount,data,count,setcodeVideo, codeVideo}) => {
 
 // console.log('que es',data)
 
@@ -15,11 +15,13 @@ export const FavPaginador = ({setCount,data,count}) => {
     // const dispatch = useDispatch()
     
 
-
+console.log('count',count)
     // console.log('apod',apod)
 
     const handleBack = () => {
-       
+        if( codeVideo != null && codeVideo.length >1){
+            setcodeVideo(null)
+        }
 
         setCount(count-1)
        
@@ -28,6 +30,9 @@ export const FavPaginador = ({setCount,data,count}) => {
   
     
     const handleAdd = () => {
+        if( codeVideo != null && codeVideo.length >1){
+            setcodeVideo(null)
+        }
    
         setCount(count+1)
 

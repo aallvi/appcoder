@@ -7,7 +7,7 @@ import { favorite, favoriteOffline } from '../store/actions/app.actions';
 
 
 
-export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
+export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod,setcodeVideo, codeVideo}) => {
 
   const [hoy, setHoy] = useState(Number(dia))
   const [mesHoy, setMesHoy] = useState(Number(mes))
@@ -38,6 +38,11 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
 
 
     const handleBack = () => {
+
+        if( codeVideo != null && codeVideo.length >1){
+            setcodeVideo(null)
+        }
+
        setless(!less)
 
         setDia(dia-1)
@@ -60,6 +65,11 @@ export const Paginador = ({dia,mes,ano,setDia,setMes,setAno,apod}) => {
     }
 
     const handleAdd = () => {
+        
+        if(codeVideo != null && codeVideo.length >1){
+            setcodeVideo(null)
+        }
+
         setadd(!add)
    
         setDia(dia+1)

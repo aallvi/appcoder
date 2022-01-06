@@ -5,6 +5,7 @@ import {Ionicons,FontAwesome} from '@expo/vector-icons'
 import { FavPaginador } from './FavPaginador'
 import { deleteFav,deleteFavOnline,favorite,loadFavs,loadFavsOffline } from '../store/actions/app.actions'
 import { Modaldescription } from '../vistasLeft/Modaldescription'
+import { FileProvider } from '../vistasLeft/FileProvider'
 // import { Description } from '../vistasLeft/Description'
 
 const {width,height} =  Dimensions.get('window')
@@ -20,12 +21,6 @@ export const Favorite = () => {
     const dispatch = useDispatch()
 
 
-    // console.log('idd',uid)
-  // if(Object.keys(favoritos).length ===0) return null
-
-    // console.log('AEEEEEER',favoritos)
-   
-  // console.log('contadoooor',contador)
   
 
 
@@ -37,7 +32,7 @@ export const Favorite = () => {
 
      setCount(favoritos.length-1)
 
-  }, [contador])
+  }, [favoritos])
 
  
    
@@ -70,6 +65,7 @@ export const Favorite = () => {
 
             const {title,copyright,date,explanation,url} = favoritos[count]
 
+  const [codeVideo, setcodeVideo] = useState('')
              
 
            
@@ -110,18 +106,10 @@ export const Favorite = () => {
            {
            
            favoritos.length > 0 && 
-           <FavPaginador data={favoritos} setCount={setCount} count={count} />
+           <FavPaginador data={favoritos} setCount={setCount} count={count} setcodeVideo={setcodeVideo}  codeVideo={codeVideo} />
            }
            
-           <TouchableOpacity onPress={() => setModalVisible(true)  }  >
-                <Image
-                  
-                  source={{ uri:url}}
-                  style={styles.image}
-                  
-                 />
-              
-              </TouchableOpacity>
+           <FileProvider url={url} setcodeVideo={setcodeVideo} codeVideo={codeVideo} setModalVisible={setModalVisible}  />
            
            {/* Fecha, paginador, copyright */}
           

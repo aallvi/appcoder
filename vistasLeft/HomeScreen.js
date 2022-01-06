@@ -9,6 +9,7 @@ import moment from 'moment'
 import {  loadFavs, loadFavsOffline, resetFav } from '../store/actions/app.actions';
 import { Modaldescription } from './Modaldescription';
 import { Player } from '../Player';
+import { FileProvider } from './FileProvider';
 // import { Notification } from '../Notification';
 // import { Description } from './Modal';
 
@@ -77,6 +78,8 @@ const handleLogout = () => {
     // console.log(urldividida) 
 
   }, [dia])
+  const [codeVideo, setcodeVideo] = useState('')
+
 
   const uid = useSelector(state => state.name.uid)
   const favoritos = useSelector(state => state.app.favoritos)
@@ -127,31 +130,24 @@ const handleLogout = () => {
           <View style={styles.imageContainer} >
 
           <Text style={{marginTop:top,color:'white', fontSize:19, textAlign:'center'}} > {title} </Text>
-          <Paginador setDia={setDia} dia={dia} mes={mes} setMes={setMes} apod={apod} setAno={setAno} ano={ano} />
+          <Paginador setDia={setDia} dia={dia} mes={mes} setMes={setMes} apod={apod} setAno={setAno} ano={ano} setcodeVideo={setcodeVideo}  codeVideo={codeVideo} />
           
           
           {/* <Description explanation={explanation} url={url} date={date} copyright={copyright} /> */}
 
          
    
-          <TouchableOpacity onPress={() => setModalVisible(true)  }  >
+          
 
+            <FileProvider url={url} setcodeVideo={setcodeVideo} codeVideo={codeVideo} setModalVisible={setModalVisible}  />
            
-              <Image
-                  
-              source={{ uri:url}}
-              style={styles.image}
-              
-
-              
-             />
 
             {/* <Player /> */}
                 
 
                  
               
-              </TouchableOpacity>
+              
 
 
           
